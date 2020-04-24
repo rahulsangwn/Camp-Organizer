@@ -9,3 +9,6 @@ Properties
 App_Data
 Migrations
 Areas/
+node_modules/
+
+ProjectUI
