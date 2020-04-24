@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Project.BAL.Logic
+{
+    public class BookingReferenceGenerator
+    {
+        private const String LETTERS = "abcdefghijklmnopqrstuvwxyz";
+        private readonly char[] Alphanumeric = (LETTERS + LETTERS.ToUpper() + "0123456789").ToCharArray();
+
+        public String GenerateBookingReference()
+        {
+            return GenerateRandom(8);
+        }
+
+        private String GenerateRandom(int length)
+        {
+            StringBuilder result = new StringBuilder();
+            Random random = new Random();
+
+            for (int i = 0; i < length; i++)
+            {
+                result.Append(Alphanumeric[random.Next(Alphanumeric.Length)]);
+            }
+
+            return result.ToString();
+        }
+    }
+}

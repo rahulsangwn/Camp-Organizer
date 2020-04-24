@@ -1,0 +1,11 @@
+.vs/
+packages
+*.sln
+*.ico
+*.csproj*
+bin
+obj
+Properties
+App_Data
+Migrations
+Areas/
