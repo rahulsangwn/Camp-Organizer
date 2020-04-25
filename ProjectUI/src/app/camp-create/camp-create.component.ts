@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-camp-create',
   templateUrl: './camp-create.component.html',
@@ -13,7 +12,7 @@ export class CampCreateComponent implements OnInit {
   imageUrl: string | ArrayBuffer =
   "https://bulma.io/images/placeholders/480x480.png";
   fileName: string = "No file selected"
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
   }
@@ -32,8 +31,12 @@ export class CampCreateComponent implements OnInit {
     }
   }
 
-  onSubmit(form: NgForm) {
-    console.log(form)
+  onSubmit(formData : {title: string, description: string, rate: number}) {
+    console.log(formData)
+    this.http.post('http://localhost:8080/api/values', formData)
+    .subscribe(responseData => {
+      console.log(responseData)
+    })
   }
 
 }

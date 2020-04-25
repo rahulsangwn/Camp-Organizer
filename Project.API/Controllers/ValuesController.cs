@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project.BAL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -22,9 +23,10 @@ namespace Project.API.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]string value)
+        public string Post(Camp value)
         {
-            Console.WriteLine(value);
+            Console.WriteLine(value.title);
+            return "You got it";
         }
 
         // PUT api/values/5
