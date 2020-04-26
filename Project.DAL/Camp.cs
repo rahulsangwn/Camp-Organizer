@@ -8,10 +8,15 @@ namespace Project.DAL
 
     public partial class Camp
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Camp()
         {
             Bookings = new HashSet<Booking>();
         }
+
+        [Required]
+        [StringLength(50)]
+        public string Name { get; set; }
 
         public int CampId { get; set; }
 
@@ -23,10 +28,10 @@ namespace Project.DAL
 
         public int Capacity { get; set; }
 
-        [Column(TypeName = "image")]
         [Required]
-        public byte[] Photo { get; set; }
+        public string Image { get; set; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Booking> Bookings { get; set; }
     }
 }

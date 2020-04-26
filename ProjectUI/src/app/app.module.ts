@@ -6,11 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CampCreateComponent } from './camp-create/camp-create.component';
+import { CampListComponent } from './camp-list/camp-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CampCreateComponent
+    CampCreateComponent,
+    CampListComponent
   ],
   imports: [
     BrowserModule,

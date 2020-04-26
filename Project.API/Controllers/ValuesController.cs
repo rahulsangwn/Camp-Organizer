@@ -1,4 +1,5 @@
 ﻿using Project.BAL.Entities;
+using Project.BAL.Processor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,23 +11,29 @@ namespace Project.API.Controllers
 {
     public class ValuesController : ApiController
     {
-        // GET api/values
-        public IEnumerable<string> Get()
+        readonly CampProcessor _cprocessor;
+        public ValuesController()
         {
-            return new string[] { "value1", "value2" };
+            _cprocessor = new CampProcessor();
+        }
+
+        // GET api/values
+        public IEnumerable<CampEntity> Get()
+        {
+            return _cprocessor.GetAllCamps();
         }
 
         // GET api/values/5
-        public string Get(int id)
+        public CampEntity Get(int id)
         {
-            return "google";
+            return _cprocessor.GetCamp(id);
         }
 
         // POST api/values
-        public string Post(Camp value)
+        public string Post(CampEntity value)
         {
-            Console.WriteLine(value.title);
-            return "You got it";
+            _cprocessor.CreateCamp(value);
+            return "Success";
         }
 
         // PUT api/values/5

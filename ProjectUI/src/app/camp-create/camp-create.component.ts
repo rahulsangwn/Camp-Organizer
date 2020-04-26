@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Camp } from 'src/app/camp.model';
+
 @Component({
   selector: 'app-camp-create',
   templateUrl: './camp-create.component.html',
@@ -8,32 +10,41 @@ import { HttpClient } from '@angular/common/http';
 export class CampCreateComponent implements OnInit {
 
   file: File;
-
+  base64textString: string
   imageUrl: string | ArrayBuffer =
-  "https://bulma.io/images/placeholders/480x480.png";
+  "assets/img/camp3.png";
   fileName: string = "No file selected"
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
   }
 
+  handleReaderLoaded(readerEvt) {
+    var binaryString = readerEvt.target.result;
+    this.base64textString= btoa(binaryString);
+    //console.log(btoa(binaryString));
+  }
   onFileChange(file: File) {
     if (file) {
       this.fileName = file.name
       this.file = file
 
       const reader = new FileReader()
-      reader.readAsDataURL(file)
+      const reader2 = new FileReader()
+      
+      reader.onload =this.handleReaderLoaded.bind(this)
+      reader.readAsBinaryString(file);
 
-      reader.onload = event => {
-        this.imageUrl = reader.result;
-      };
+      reader2.readAsDataURL(file)
+      reader2.onload = event => {
+          this.imageUrl = reader2.result;
+        };
     }
   }
 
-  onSubmit(formData : {title: string, description: string, rate: number}) {
-    console.log(formData)
-    this.http.post('http://localhost:8080/api/values', formData)
+  onSubmit(data : Camp) {
+    data["image"] = 'data:image/jpg;base64,' + this.base64textString
+    this.http.post<Camp>('http://localhost:8080/api/values', data)
     .subscribe(responseData => {
       console.log(responseData)
     })

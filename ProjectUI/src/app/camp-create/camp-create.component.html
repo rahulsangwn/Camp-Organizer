@@ -1,7 +1,8 @@
 <div class="container">
     <form (ngSubmit)="onSubmit(f.value)" #f="ngForm">
         <div class="row top-buffer">
-            <div class="col-sm-5">
+            <div class="text-center col-sm-5">
+                <br>
                 <div class="custom-file">
                     <input
                         type="file" class="custom-file-input"
@@ -11,24 +12,30 @@
                     <label class="custom-file-label" for="customFile">{{fileName}}</label>
                 </div>
                 <div>
-                    <div class="column">
-                        <img class="image-preview" [src]="imageUrl" />
+                    <div class="image-top">
+                        <img class="border border-secondary rounded" [src]="imageUrl" />
                     </div>
                 </div>
             </div>
     
-            <div class="col-sm-7">
+            <div class="col-sm-7 col-pad">
                 <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" class="form-control" name="title" #title="ngModel"
-                        id="title" placeholder="Enter Camp Title" ngModel required>
-                    <span class="help-block" style="color: red;" *ngIf="!title.valid && title.touched">Please Enter Title</span>
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="name" #name="ngModel"
+                        id="name" placeholder="Enter Camp Name" ngModel required>
+                    <span class="help-block" style="color: red;" *ngIf="!name.valid && name.touched">Please Enter Name</span>
                 </div>
 
                 <div class="form-group">
                     <label for="rate">Rate Per Night (INR)</label>
                     <input type="number" class="form-control" name="rate"
                         id="rate" ngModel required>
+                </div>
+
+                <div class="form-group">
+                    <label for="rate">Camp Capacity</label>
+                    <input type="number" class="form-control" name="capacity"
+                        id="capacity" ngModel required>
                 </div>
 
                 <div class="form-group">

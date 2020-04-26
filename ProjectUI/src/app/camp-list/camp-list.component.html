@@ -1,0 +1,16 @@
+<div class="container">
+    <div>
+        <div class="card-columns" >
+            <div class="card" *ngFor="let camp of campList">
+                <img class="card-img-top" src="{{camp.image}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{camp.name}}</h5>
+                    <p class="card-text">{{camp.description}}</p>
+                    <p class="card-text row">
+                        <small class="badge badge-primary text-wrap col">Price (INR): {{camp.rate}}</small>
+                        <small class="badge badge-warning text-wrap col">Capacity: {{camp.capacity}}</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>

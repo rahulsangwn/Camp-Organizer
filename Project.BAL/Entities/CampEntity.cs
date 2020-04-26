@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace Project.BAL.Entities
 {
-    public class Camp
+    public class CampEntity
     {
-        public string title { get; set; }
+        public int campid { get; set; }
+        public string name { get; set; }
         public string description { get; set; }
         public int rate { get; set; }
+        public string image { get; set; }
+        public int capacity { get; set; }
     }
 }
