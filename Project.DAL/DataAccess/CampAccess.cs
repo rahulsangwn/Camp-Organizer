@@ -8,10 +8,10 @@ namespace Project.DAL.DataAccess
 {
     public class CampAccess
     {
-        readonly CampContext _context;
+        readonly CampContex _context;
         public CampAccess()
         {
-            _context = new CampContext();
+            _context = new CampContex();
         }
 
         public void Create(Camp camp)

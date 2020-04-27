@@ -5,15 +5,16 @@ namespace Project.DAL
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class CampContext : DbContext
+    public partial class CampContex : DbContext
     {
-        public CampContext()
+        public CampContex()
             : base("name=CampContext")
         {
         }
 
         public virtual DbSet<Booking> Bookings { get; set; }
         public virtual DbSet<Camp> Camps { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
