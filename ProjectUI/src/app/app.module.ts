@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { CampCreateComponent } from './camp-create/camp-create.component';
 import { CampListComponent } from './camp-list/camp-list.component';
 import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponet } from 'src/shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CampCreateComponent,
     CampListComponent,
-    AuthComponent
+    AuthComponent,
+    LoadingSpinnerComponet
   ],
   imports: [
     BrowserModule,

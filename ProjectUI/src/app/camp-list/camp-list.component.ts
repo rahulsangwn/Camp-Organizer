@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./camp-list.component.scss']
 })
 export class CampListComponent implements OnInit {
+  isLoading = true
   campList: Camp[] = []
   constructor(private http: HttpClient) { }
 
@@ -20,7 +21,8 @@ export class CampListComponent implements OnInit {
     this.http.get<Camp[]>('http://localhost:8080/api/values/')
     .subscribe(camps => {
       this.campList = camps
-      console.log(camps)
+      this.isLoading = false;
+      // console.log(camps)
     })
   }
 

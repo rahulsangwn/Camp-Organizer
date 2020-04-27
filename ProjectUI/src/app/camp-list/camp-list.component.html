@@ -1,5 +1,8 @@
 <div class="container top-buffer">
-    <div>
+    <div *ngIf="isLoading" style="text-align: center;">
+        <app-loading-spinner></app-loading-spinner>
+    </div>
+    <div *ngIf="!isLoading">
         <div class="card-columns" >
             <a class="card" *ngFor="let camp of campList" href="#">
                 <img class="card-img-top" src="{{camp.image}}" alt="Card image cap">

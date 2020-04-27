@@ -37,7 +37,7 @@ namespace Project.API.App_Start
             } 
             else
             {
-                context.SetError("invalid_grant", "Please Provide valid username and password");
+                context.SetError("invalid_grant", "Please Provide valid email and password");
             }
         }
     }
