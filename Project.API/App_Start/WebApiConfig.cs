@@ -35,4 +35,5 @@ namespace Project.API
             jsonFormatter.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc;
         }
     }
+    
 }

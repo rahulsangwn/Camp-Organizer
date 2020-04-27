@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { logging } from 'protractor';
+import { AuthComponent } from './auth/auth.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: 'login', component: AuthComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
