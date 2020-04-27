@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 
 namespace Project.API.Controllers
@@ -18,22 +19,29 @@ namespace Project.API.Controllers
         }
 
         // GET api/values
+        [AllowAnonymous]
         public IEnumerable<CampEntity> Get()
         {
             return _cprocessor.GetAllCamps();
         }
 
         // GET api/values/5
-        public CampEntity Get(int id)
+        //public CampEntity Get(int id)
+        //{
+        //    return _cprocessor.GetCamp(id);
+        //}
+        [Authorize]
+        public string Get(int id)
         {
-            return _cprocessor.GetCamp(id);
+            var identity = (ClaimsIdentity)User.Identity;
+            return "Hello" + identity.Name;
         }
 
         // POST api/values
-        public string Post(CampEntity value)
+        public IHttpActionResult Post(CampEntity value)
         {
             _cprocessor.CreateCamp(value);
-            return "Success";
+            return Ok("Camp Created!");
         }
 
         // PUT api/values/5
