@@ -10,46 +10,41 @@ using System.Web.Http;
 
 namespace Project.API.Controllers
 {
-    public class ValuesController : ApiController
+    public class CampsController : ApiController
     {
         readonly CampProcessor _cprocessor;
-        public ValuesController()
+        public CampsController()
         {
             _cprocessor = new CampProcessor();
         }
 
-        // GET api/values
+        // GET api/camps
         [AllowAnonymous]
-        public IEnumerable<CampEntity> Get()
+        public IEnumerable<CampEntity> Get(FilterEntity filter)
         {
-            return _cprocessor.GetAllCamps();
+            return _cprocessor.GetAllCamps(filter);
         }
 
-        // GET api/values/5
-        //public CampEntity Get(int id)
-        //{
-        //    return _cprocessor.GetCamp(id);
-        //}
+        // GET api/camps/5
+        public CampEntity Get(int id)
+        {
+            return _cprocessor.GetCamp(id);
+        }
+
+        // POST api/camps
         [Authorize]
-        public string Get(int id)
-        {
-            var identity = (ClaimsIdentity)User.Identity;
-            return "Hello" + identity.Name;
-        }
-
-        // POST api/values
         public IHttpActionResult Post(CampEntity value)
         {
             _cprocessor.CreateCamp(value);
             return Ok("Camp Created!");
         }
 
-        // PUT api/values/5
+        // PUT api/camps/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE api/values/5
+        // DELETE api/camps/5
         public void Delete(int id)
         {
         }

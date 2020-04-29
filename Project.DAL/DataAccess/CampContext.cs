@@ -1,13 +1,13 @@
-namespace Project.DAL
+namespace Project.DAL.DataAccess
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class CampContex : DbContext
+    public partial class CampContext : DbContext
     {
-        public CampContex()
+        public CampContext()
             : base("name=CampContext")
         {
         }
@@ -20,19 +20,11 @@ namespace Project.DAL
         {
             modelBuilder.Entity<Booking>()
                 .Property(e => e.BookingReferenceNo)
-                .IsFixedLength();
+                .IsUnicode(false);
 
             modelBuilder.Entity<Booking>()
-                .Property(e => e.BillingAddress)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Booking>()
-                .Property(e => e.State)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Booking>()
-                .Property(e => e.Country)
-                .IsFixedLength();
+                .Property(e => e.CellPhone)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Camp>()
                 .Property(e => e.Description)

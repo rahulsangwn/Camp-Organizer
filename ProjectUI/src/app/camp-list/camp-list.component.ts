@@ -18,7 +18,7 @@ export class CampListComponent implements OnInit {
   }
 
   private fetchCamps() {
-    this.http.get<Camp[]>('http://localhost:8080/api/values/')
+    this.http.get<Camp[]>('http://localhost:8080/api/camps/')
     .subscribe(camps => {
       this.campList = camps
       this.isLoading = false;

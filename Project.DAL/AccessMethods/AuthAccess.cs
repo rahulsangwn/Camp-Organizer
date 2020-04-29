@@ -1,17 +1,18 @@
-﻿using System;
+﻿using Project.DAL.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project.DAL.DataAccess
+namespace Project.DAL.AccessMethods
 {
     public class AuthAccess
     {
-        readonly CampContex _context;
+        readonly CampContext _context;
         public AuthAccess()
         {
-            _context = new CampContex();
+            _context = new CampContext();
         }
 
         public bool IsValid(string username, string password)

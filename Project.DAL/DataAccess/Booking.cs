@@ -1,4 +1,4 @@
-namespace Project.DAL
+namespace Project.DAL.DataAccess
 {
     using System;
     using System.Collections.Generic;
@@ -9,7 +9,7 @@ namespace Project.DAL
     public partial class Booking
     {
         [Key]
-        [StringLength(8)]
+        [StringLength(50)]
         public string BookingReferenceNo { get; set; }
 
         public int CampId { get; set; }
@@ -23,11 +23,11 @@ namespace Project.DAL
         public int TotalAmount { get; set; }
 
         [Required]
-        [StringLength(100)]
+        [StringLength(50)]
         public string BillingAddress { get; set; }
 
         [Required]
-        [StringLength(40)]
+        [StringLength(50)]
         public string State { get; set; }
 
         [Required]
@@ -35,6 +35,9 @@ namespace Project.DAL
         public string Country { get; set; }
 
         public int ZipCode { get; set; }
+
+        [StringLength(15)]
+        public string CellPhone { get; set; }
 
         public virtual Camp Camp { get; set; }
     }

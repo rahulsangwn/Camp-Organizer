@@ -11,12 +11,12 @@ namespace Project.BAL.Logic
         private const String LETTERS = "abcdefghijklmnopqrstuvwxyz";
         private readonly char[] Alphanumeric = (LETTERS + LETTERS.ToUpper() + "0123456789").ToCharArray();
 
-        public String GenerateBookingReference()
+        public string GenerateBookingReference()
         {
             return GenerateRandom(8);
         }
 
-        private String GenerateRandom(int length)
+        private string GenerateRandom(int length)
         {
             StringBuilder result = new StringBuilder();
             Random random = new Random();

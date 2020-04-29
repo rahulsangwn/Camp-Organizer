@@ -1,4 +1,4 @@
-namespace Project.DAL
+namespace Project.DAL.DataAccess
 {
     using System;
     using System.Collections.Generic;

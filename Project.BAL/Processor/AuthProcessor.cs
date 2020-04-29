@@ -1,4 +1,5 @@
-﻿using Project.DAL.DataAccess;
+﻿using Project.DAL.AccessMethods;
+using Project.DAL.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
