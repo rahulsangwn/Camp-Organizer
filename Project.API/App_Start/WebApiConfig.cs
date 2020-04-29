@@ -23,10 +23,10 @@ namespace Project.API
             );
 
             // Enable CORS for the Angular App
-            var cors = new EnableCorsAttribute("http://localhost:4200", "*", "*");
+            //var cors = new EnableCorsAttribute("http://localhost:4200", "*", "*");
             // using the * as a wildcard for headers and methods
             // allowing all headers and methods from this origin
-            config.EnableCors(cors);
+            //config.EnableCors(cors);
 
             // Set JSON formatter as default one and remove XmlFormatter
             var jsonFormatter = config.Formatters.JsonFormatter;

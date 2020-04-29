@@ -6,9 +6,11 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Http.Cors;
 
 namespace Project.API.App_Start
 {
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
     public class AuthServiceProvider : OAuthAuthorizationServerProvider
     {
         AuthProcessor _aprocessor;
