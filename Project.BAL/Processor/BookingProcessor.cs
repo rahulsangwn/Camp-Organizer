@@ -48,5 +48,30 @@ namespace Project.BAL.Processor
 
             return bookingRef;
         }
+
+        public BookingEntity GetBooking(string bookingRef)
+        {
+            var booking = _booking.Get(bookingRef);
+            BookingEntity bookingDetails = new BookingEntity()
+            {
+                BookingReferenceNo = bookingRef,
+                CampId = booking.CampId,
+                BillingAddress = booking.BillingAddress,
+                State = booking.State,
+                Country = booking.Country,
+                ZipCode = booking.ZipCode,
+                CellPhone = booking.CellPhone,
+                CheckedInDate = booking.CheckedInDate,
+                CheckedOutDate = booking.CheckedOutDate,
+                TotalAmount = booking.TotalAmount
+            };
+
+            return bookingDetails;
+        }
+
+        public bool DeleteBooking(string bookingRef)
+        {
+            return _booking.Delete(bookingRef);
+        }
     }
 }

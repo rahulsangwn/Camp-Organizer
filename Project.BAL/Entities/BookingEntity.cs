@@ -17,6 +17,7 @@ namespace Project.BAL.Entities
         public string Country { get; set; }
         public int ZipCode { get; set; }
         public string CellPhone { get; set; }
+        public int TotalAmount { get; set; }
 
     }
 }

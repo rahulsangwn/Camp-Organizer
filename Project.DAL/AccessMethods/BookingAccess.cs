@@ -34,5 +34,21 @@ namespace Project.DAL.AccessMethods
                 .Select(s => s.CampId).ToList();
         }
 
+        public Booking Get(string bookingRef)
+        {
+            return _context.Bookings.FirstOrDefault(s => s.BookingReferenceNo == bookingRef);
+        }
+
+        public bool Delete(string bookingRef)
+        {
+            var booking = _context.Bookings.FirstOrDefault(b => b.BookingReferenceNo == bookingRef);
+            if (booking != null && booking.CheckedInDate > DateTime.Now)
+            {
+                _context.Bookings.Remove(booking);
+                return true;
+            }
+
+            return false;
+        }
     }
 }

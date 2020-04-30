@@ -16,10 +16,21 @@ namespace Project.API.Controllers
         {
             _bprocessor = new BookingProcessor();
         }
+
         public IHttpActionResult Post(BookingEntity value)
         {
             var bookingReference = _bprocessor.CreateBooking(value);
             return Ok(bookingReference);
+        }
+
+        public BookingEntity Get(string bookingRef)
+        {
+            return _bprocessor.GetBooking(bookingRef);
+        }
+
+        public bool Delete(string bookingRef)
+        {
+            return _bprocessor.DeleteBooking(bookingRef);
         }
     }
 }

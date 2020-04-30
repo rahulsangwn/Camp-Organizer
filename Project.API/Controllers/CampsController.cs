@@ -20,7 +20,7 @@ namespace Project.API.Controllers
 
         // GET api/camps
         [AllowAnonymous]
-        public IEnumerable<CampEntity> Get(FilterEntity filter)
+        public IEnumerable<CampEntity> Get([FromUri] FilterEntity filter)
         {
             return _cprocessor.GetAllCamps(filter);
         }
