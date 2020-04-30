@@ -27,7 +27,6 @@ export class CampListComponent implements OnInit {
     .subscribe(camps => {
       this.campList = camps
       this.isLoading = false;
-      // console.log(camps)
     })
   }
 
