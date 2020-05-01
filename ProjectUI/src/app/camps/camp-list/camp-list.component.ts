@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { Camp } from 'src/app/camp.model';
-import { map } from 'rxjs/operators';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-camp-list',

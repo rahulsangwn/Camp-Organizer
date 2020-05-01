@@ -8,7 +8,6 @@ import { Camp } from 'src/app/camp.model';
 })
 export class CampItemComponent implements OnInit {
   @Input() camp: Camp
-
   constructor() { }
 
   ngOnInit(): void {

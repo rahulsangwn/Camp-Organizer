@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { logging } from 'protractor';
 import { AuthComponent } from './auth/auth.component';
 import { CampCreateComponent } from './camp-create/camp-create.component';
-import { CampListComponent } from './camp-list/camp-list.component';
+import { CampsComponent } from './camps/camps.component';
 
 
 const routes: Routes = [
   {path: 'login', component: AuthComponent},
-  {path: '', component: CampListComponent},
+  {path: '', component: CampsComponent},
   {path: 'addcamp', component: CampCreateComponent}
 ];
 
