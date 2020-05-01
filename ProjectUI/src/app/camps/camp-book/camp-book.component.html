@@ -1,52 +1,68 @@
 <div class="container top-buffer">
     <div class="row">
         <div class="col-md-5">
-            <app-camp-item [camp]="campPassed"></app-camp-item>
+            <app-camp-item [camp]="campPassed.Camp"></app-camp-item>
         </div>
 
         <div class="col-md-7 rounded border border-primary">
-            <button class="btn btn-primary" (click)="backToList()">Back To List</button>
             <br>
-            <form >
+            <div class="row">
+                <div class="col-8">
+                    <h1>
+                        {{campPassed.Camp.name}}
+                    </h1>
+                    <div class="row">
+                        <button class="btn btn-primary col-9 ml-3" (click)="backToList()">Back To List</button>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <p class="lead text-success font-weight-bold">Total Days Stay: {{TotalStays}}</p>
+                    <p class="lead text-info font-weight-bold">Price/Night: {{campPassed.Camp.rate}}</p>
+                    <hr>
+                </div>
+            </div>
+            <h4 class="text-right text-danger">Payable Amount: INR(&#x20b9;) {{TotalAmount}}</h4>
+            <hr>
+            <form (ngSubmit)="onBook(f.value)" #f="ngForm">
                 <div class="form-group form-row">
                     <div class="col-md-4">
                         <label for="CheckInDate" class="col-form-label">Check In Date</label>
-                        <input type="date" name="CheckInDate" id="CheckInDate" class="form-control" value="2020/01/01" disabled>
+                        <input type="date" name="CheckInDate" id="CheckInDate" class="form-control" value="{{campPassed.Filter.CheckInDate}}" disabled>
                     </div>
                     <div class="col-md-4">
                         <label for="CheckOutDate" class="col-form-label">Check Out Date</label>
-                        <input type="date" value="02/03/2020" name="CheckOutDate" id="CheckOutDate" class="form-control" disabled>
+                        <input type="date" value="{{campPassed.Filter.CheckOutDate}}" name="CheckOutDate" id="CheckOutDate" class="form-control" disabled>
                     </div>
                     <div class="col-md-4">
                         <label for="Capacity" class="col-form-label">Capacity</label>
-                        <input type="number" value="4" name="Capacity" id="Capacity" class="form-control" disabled>
+                        <input type="number" value="{{campPassed.Camp.capacity}}" name="Capacity" id="Capacity" class="form-control" disabled>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="Phone" class="col-sm-3 col-form-label">Contact No.</label>
+                    <label for="CellPhone" class="col-sm-3 col-form-label">Contact No.</label>
                     <div class="col-sm-9">
-                        <input type="text" name="Phone" id="Phone" class="form-control">
+                        <input type="text" name="CellPhone" id="CellPhone" class="form-control" ngModel>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="BillingAddress" class="col-sm-3 col-form-label">Billing Address</label>
                     <div class="col-sm-9">
-                        <input type="text" name="BillingAddress" id="BillingAddress" class="form-control" placeholder="#H.No./Flat No., City">
+                        <input type="text" name="BillingAddress" id="BillingAddress" class="form-control" ngModel placeholder="#H.No./Flat No., City">
                     </div>
                 </div>
                 <div class="form-group form-row">
                     <div class="col-7">
-                        <input type="text" name="State" class="form-control" placeholder="State">
+                        <input ngModel type="text" name="State" class="form-control" placeholder="State">
                     </div>
                     <div class="col">
-                        <input type="text" name="Country" class="form-control" placeholder="Country">
+                        <input ngModel type="text" name="Country" class="form-control" placeholder="Country">
                     </div>
                     <div class="col">
-                        <input type="number" name="ZipCode" class="form-control" placeholder="Zip">
+                        <input ngModel type="number" name="ZipCode" class="form-control" placeholder="Zip">
                     </div>
                 </div>
-                <div class="form-group form-row">
-                    <button class="btn btn-primary">Book Now</button>
+                <div class="form-group form-row justify-content-center">
+                    <button type="submit" class="btn btn-primary">Book Now & Pay &#x20b9;{{TotalAmount}}</button>
                 </div>
             </form>
         </div>

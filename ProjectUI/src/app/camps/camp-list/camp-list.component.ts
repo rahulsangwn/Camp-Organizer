@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Camp, Filter } from 'src/app/camp.model';
+import { Camp, Filter, CampAndFilter } from 'src/app/camp.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
@@ -8,7 +8,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   styleUrls: ['./camp-list.component.scss']
 })
 export class CampListComponent implements OnInit {
-  @Output() campSelectedFromList = new EventEmitter<Camp>()
+  @Output() campSelectedFromList = new EventEmitter<CampAndFilter>()
   isLoading = true
   campList: Camp[] = []
   filterData: Filter = {
@@ -35,7 +35,11 @@ export class CampListComponent implements OnInit {
   }
   
   onCampSelected(camp: Camp) {
-    this.campSelectedFromList.emit(camp)
+    var campWithFilter = {
+      Camp: camp,
+      Filter: this.filterData
+    }
+    this.campSelectedFromList.emit(campWithFilter)
   }
 
   onFilter(filter: Filter) {
@@ -47,7 +51,7 @@ export class CampListComponent implements OnInit {
     var offset = new Date().getTime() + 24 * 60 * 60 * 1000 * daysOffset
     var today = new Date(offset);
     var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
     var yyyy = today.getFullYear();
 
     return (yyyy + '-' + mm + '-' + dd);
