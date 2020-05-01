@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Camp } from 'src/app/camp.model'
 
 @Component({
   selector: 'app-camps',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./camps.component.scss']
 })
 export class CampsComponent implements OnInit {
-
+  selectedCamp: Camp = null
   constructor() { }
 
   ngOnInit(): void {

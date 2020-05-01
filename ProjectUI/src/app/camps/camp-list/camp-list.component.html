@@ -8,6 +8,8 @@
     <div class="" *ngIf="!isLoading">
         <div class="card-columns" >
 
-            <app-camp-item *ngFor="let campEntity of campList" [camp]="campEntity"></app-camp-item>
+            <app-camp-item *ngFor="let campEntity of campList" 
+            (campSelected)="onCampSelected(campEntity)"
+            [camp]="campEntity"></app-camp-item>
         </div>
     </div>

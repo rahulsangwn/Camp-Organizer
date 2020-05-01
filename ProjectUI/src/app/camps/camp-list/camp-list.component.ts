@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Camp } from 'src/app/camp.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
@@ -8,6 +8,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   styleUrls: ['./camp-list.component.scss']
 })
 export class CampListComponent implements OnInit {
+  @Output() campSelectedFromList = new EventEmitter<Camp>()
   isLoading = true
   campList: Camp[] = []
   constructor(private http: HttpClient) { }
@@ -28,5 +29,8 @@ export class CampListComponent implements OnInit {
       this.isLoading = false;
     })
   }
-
+  
+  onCampSelected(camp: Camp) {
+    this.campSelectedFromList.emit(camp)
+  }
 }
