@@ -12,6 +12,8 @@ import { LoadingSpinnerComponet } from 'src/shared/loading-spinner/loading-spinn
 import { NavbarComponent } from './navbar/navbar.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FilterViewComponent } from './filter-view/filter-view.component';
+import { CampItemComponent } from './camp-list/camp-item/camp-item.component';
+import { CampsComponent } from './camps/camps.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { FilterViewComponent } from './filter-view/filter-view.component';
     AuthComponent,
     LoadingSpinnerComponet,
     NavbarComponent,
-    FilterViewComponent
+    FilterViewComponent,
+    CampItemComponent,
+    CampsComponent
   ],
   imports: [
     BrowserModule,

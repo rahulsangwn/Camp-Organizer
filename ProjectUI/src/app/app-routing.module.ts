@@ -9,7 +9,7 @@ import { CampListComponent } from './camp-list/camp-list.component';
 const routes: Routes = [
   {path: 'login', component: AuthComponent},
   {path: '', component: CampListComponent},
-  {path: 'create', component: CampCreateComponent}
+  {path: 'addcamp', component: CampCreateComponent}
 ];
 
 @NgModule({
