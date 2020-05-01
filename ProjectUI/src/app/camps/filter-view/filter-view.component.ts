@@ -10,7 +10,6 @@ export class FilterViewComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log("you are safe")
   }
 
 }

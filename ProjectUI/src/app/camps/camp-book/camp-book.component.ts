@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Camp } from 'src/app/camp.model';
 
 @Component({
@@ -8,10 +8,14 @@ import { Camp } from 'src/app/camp.model';
 })
 export class CampBookComponent implements OnInit {
   @Input() campPassed: Camp
+  @Output() campNotSelected = new EventEmitter<void>()
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  backToList() {
+    this.campNotSelected.emit()
+  }
 }

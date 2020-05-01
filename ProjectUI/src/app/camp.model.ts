@@ -5,3 +5,9 @@ export interface Camp {
     rate: number;
     image: string;
 }
+
+export interface Filter {
+    Capacity: number;
+    CheckInDate: string; 
+    CheckOutDate: string
+}

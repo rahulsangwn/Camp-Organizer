@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Camp } from 'src/app/camp.model'
 
 @Component({
@@ -11,7 +11,10 @@ export class CampsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log("you are in camp")
+  }
+
+  backToList() {
+    this.selectedCamp = null
   }
 
 }

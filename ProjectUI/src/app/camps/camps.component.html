@@ -1,5 +1,6 @@
 
 <app-camp-list (campSelectedFromList)="selectedCamp = $event"
-*ngIf="selectedCamp == null"></app-camp-list>
+*ngIf="selectedCamp == null" ></app-camp-list>
 
-<app-camp-book *ngIf="selectedCamp != null" [campPassed]="selectedCamp"></app-camp-book>
+<app-camp-book *ngIf="selectedCamp != null" (campNotSelected)="backToList()"
+[campPassed]="selectedCamp"></app-camp-book>

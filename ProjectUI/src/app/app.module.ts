@@ -12,6 +12,7 @@ import { FilterViewComponent } from './camps/filter-view/filter-view.component';
 import { CampItemComponent } from './camps/camp-list/camp-item/camp-item.component';
 import { CampsComponent } from './camps/camps.component';
 import { CampListComponent } from './camps/camp-list/camp-list.component';
+import { CampBookComponent } from './camps/camp-book/camp-book.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CampListComponent } from './camps/camp-list/camp-list.component';
     CampItemComponent,
     CampsComponent,
     CampListComponent,
+    CampBookComponent,
   ],
   imports: [
     BrowserModule,

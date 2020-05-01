@@ -1,6 +1,37 @@
 <div class="container top-buffer">
 
-    <app-filter-view></app-filter-view>
+    <div class="my-5">
+        <nav class="navbar navbar-light bg-danger justify-content-center rounded">
+            <form class="form-inline" (ngSubmit)="onFilter(f.value)" #f="ngForm">
+                <span>
+                    <span class="text-white mr-3"> From: {{filterData.CheckInDate}}</span>
+                    <input type="date" name="CheckInDate" ngModel id="date" class="form-control" [ngModel]="filterData.CheckInDate">
+                </span>
+                <span class="mx-3">
+                    <span class="text-white mr-3"> To: </span>
+                    <input type="date" name="CheckOutDate" id="checkoutdate" class="form-control" [ngModel]="filterData.CheckOutDate" ngModel>
+                </span>
+        
+                <span class="text-white">
+                    <span class="text-white mr-3"> Capacity: </span>
+                    <select class="form-control" name="Capacity" [ngModel]="filterData.Capacity" ngModel>
+                        <option [selected]="filterData.Capacity == 0" value = "0">Any</option>
+                        <option [selected]="filterData.Capacity == 1">1</option>
+                        <option [selected]="filterData.Capacity == 2">2</option>
+                        <option [selected]="filterData.Capacity == 4">4</option>
+                        <option [selected]="filterData.Capacity == 8">8</option>
+                    </select>
+                </span>
+    
+                <span class="ml-4">
+                    <button type="submit" class="btn btn-success">Search</button>
+                </span>
+        
+            </form>
+        </nav>
+    </div>
+
+    <!-- <app-filter-view></app-filter-view> -->
 
     <div *ngIf="isLoading" style="text-align: center;">
         <app-loading-spinner></app-loading-spinner>

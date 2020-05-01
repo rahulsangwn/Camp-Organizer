@@ -1,23 +1,52 @@
 <div class="container top-buffer">
     <div class="row">
-        <div class="col-sm-5">
+        <div class="col-md-5">
             <app-camp-item [camp]="campPassed"></app-camp-item>
         </div>
 
-        <div class="col-sm-7">
-            <button class="btn btn-primary">Back To Dashboard</button>
-            <form>
-                <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+        <div class="col-md-7 rounded border border-primary">
+            <button class="btn btn-primary" (click)="backToList()">Back To List</button>
+            <br>
+            <form >
+                <div class="form-group form-row">
+                    <div class="col-md-4">
+                        <label for="CheckInDate" class="col-form-label">Check In Date</label>
+                        <input type="date" name="CheckInDate" id="CheckInDate" class="form-control" value="2020/01/01" disabled>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="CheckOutDate" class="col-form-label">Check Out Date</label>
+                        <input type="date" value="02/03/2020" name="CheckOutDate" id="CheckOutDate" class="form-control" disabled>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="Capacity" class="col-form-label">Capacity</label>
+                        <input type="number" value="4" name="Capacity" id="Capacity" class="form-control" disabled>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    <label for="Phone" class="col-sm-3 col-form-label">Contact No.</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="Phone" id="Phone" class="form-control">
                     </div>
+                </div>
+                <div class="form-group row">
+                    <label for="BillingAddress" class="col-sm-3 col-form-label">Billing Address</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="BillingAddress" id="BillingAddress" class="form-control" placeholder="#H.No./Flat No., City">
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <div class="col-7">
+                        <input type="text" name="State" class="form-control" placeholder="State">
+                    </div>
+                    <div class="col">
+                        <input type="text" name="Country" class="form-control" placeholder="Country">
+                    </div>
+                    <div class="col">
+                        <input type="number" name="ZipCode" class="form-control" placeholder="Zip">
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <button class="btn btn-primary">Book Now</button>
                 </div>
             </form>
         </div>
