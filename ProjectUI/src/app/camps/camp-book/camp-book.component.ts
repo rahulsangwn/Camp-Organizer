@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Camp, CampAndFilter, Booking } from 'src/app/camp.model';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-camp-book',
@@ -13,8 +14,11 @@ export class CampBookComponent implements OnInit {
 
   TotalStays: number 
   TotalAmount: number 
+  myOpacity= 0
+  myPointer = "none"
+  BookingReference: string
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
     this.TotalStays = this.calculateTotalStays()
@@ -38,10 +42,19 @@ export class CampBookComponent implements OnInit {
     booking.CheckInDate = this.campPassed.Filter.CheckInDate
     booking.CheckOutDate = this.campPassed.Filter.CheckOutDate
     booking.TotalAmount = this.TotalAmount
+    // Dynmically Showing Modal
+    this.myOpacity = 1
+    this.myPointer = "auto"
 
-    this.http.post<Booking>('http://localhost:8080/api/bookings', booking)
+    this.http.post('http://localhost:8080/api/bookings', booking)
     .subscribe(responseData => {
+      this.BookingReference = responseData.toString()
       console.log(responseData)
     })
+  }
+
+  redirect() {
+    this.router.navigate(['/dashboard', {skipLocationChange: true}]).then(()=>
+      this.router.navigate(['/']))
   }
 }

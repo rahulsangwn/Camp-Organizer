@@ -6,6 +6,7 @@ import { CampsComponent } from './camps/camps.component';
 
 
 const routes: Routes = [
+  {path: 'dashboard', component: CampsComponent},
   {path: 'login', component: AuthComponent},
   {path: '', component: CampsComponent},
   {path: 'addcamp', component: CampCreateComponent}
