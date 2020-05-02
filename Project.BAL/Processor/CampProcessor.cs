@@ -50,6 +50,11 @@ namespace Project.BAL.Processor
             return entity;
         }
 
+        public void DeleteCamp(int id)
+        {
+            _camp.Delete(id);
+        }
+
         public IEnumerable<CampEntity> GetAllCamps(FilterEntity filter)
         {
             var bookedCamps = _booking.CampBookedBetween(filter.CheckInDate, filter.CheckOutDate);

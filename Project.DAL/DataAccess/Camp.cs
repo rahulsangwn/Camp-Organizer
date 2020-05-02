@@ -19,6 +19,7 @@ namespace Project.DAL.DataAccess
         public string Name { get; set; }
 
         public int CampId { get; set; }
+        public int Rating { get; set; }
 
         [Required]
         [StringLength(200)]

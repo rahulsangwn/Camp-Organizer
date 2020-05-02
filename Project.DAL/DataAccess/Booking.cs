@@ -21,6 +21,7 @@ namespace Project.DAL.DataAccess
         public DateTime CheckedOutDate { get; set; }
 
         public int TotalAmount { get; set; }
+        public int Rating { get; set; }
 
         [Required]
         [StringLength(50)]

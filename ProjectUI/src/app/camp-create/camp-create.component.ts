@@ -44,7 +44,7 @@ export class CampCreateComponent implements OnInit {
 
   onSubmit(data : Camp) {
     data["image"] = 'data:image/jpg;base64,' + this.base64textString
-    this.http.post<Camp>('http://localhost:8080/api/values', data)
+    this.http.post<Camp>('http://localhost:8080/api/camps', data)
     .subscribe(responseData => {
       console.log(responseData)
     })

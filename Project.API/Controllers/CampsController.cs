@@ -32,7 +32,7 @@ namespace Project.API.Controllers
         }
 
         // POST api/camps
-        [Authorize]
+        //[Authorize]
         public IHttpActionResult Post(CampEntity value)
         {
             _cprocessor.CreateCamp(value);
@@ -47,6 +47,7 @@ namespace Project.API.Controllers
         // DELETE api/camps/5
         public void Delete(int id)
         {
+            _cprocessor.DeleteCamp(id);
         }
     }
 }

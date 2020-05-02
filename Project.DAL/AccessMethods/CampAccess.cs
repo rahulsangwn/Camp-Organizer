@@ -17,6 +17,7 @@ namespace Project.DAL.AccessMethods
 
         public void Create(Camp camp)
         {
+            camp.Rating = 5;
             _context.Camps.Add(camp);
             _context.SaveChanges();
         }
@@ -29,6 +30,16 @@ namespace Project.DAL.AccessMethods
         public Camp Get(int Id)
         {
             return _context.Camps.FirstOrDefault(s => s.CampId == Id);
+        }
+
+        public void Delete(int id)
+        {
+            var camp = _context.Camps.FirstOrDefault(s => s.CampId == id);
+
+            if (camp != null)
+            {
+                _context.Camps.Remove(camp);
+            }
         }
     }
 }

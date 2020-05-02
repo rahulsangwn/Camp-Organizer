@@ -28,7 +28,7 @@ namespace Project.BAL.Processor
             }
 
             TotalAmountCalculator amountCalculator = new TotalAmountCalculator();
-            int amount = amountCalculator.CalculateAmount(booking.CheckedInDate, booking.CheckedOutDate, booking.CampId);
+            int amount = amountCalculator.CalculateAmount(booking.CheckInDate, booking.CheckOutDate, booking.CampId);
 
             Booking newBooking = new Booking()
             {
@@ -39,8 +39,8 @@ namespace Project.BAL.Processor
                 Country            = booking.Country,
                 ZipCode            = booking.ZipCode,
                 CellPhone          = booking.CellPhone,
-                CheckedInDate      = booking.CheckedInDate,
-                CheckedOutDate     = booking.CheckedOutDate,
+                CheckedInDate      = booking.CheckInDate,
+                CheckedOutDate     = booking.CheckOutDate,
                 TotalAmount        = amount
             };
 
@@ -61,8 +61,8 @@ namespace Project.BAL.Processor
                 Country = booking.Country,
                 ZipCode = booking.ZipCode,
                 CellPhone = booking.CellPhone,
-                CheckedInDate = booking.CheckedInDate,
-                CheckedOutDate = booking.CheckedOutDate,
+                CheckInDate = booking.CheckedInDate,
+                CheckOutDate = booking.CheckedOutDate,
                 TotalAmount = booking.TotalAmount
             };
 
