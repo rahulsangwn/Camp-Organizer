@@ -15,6 +15,7 @@ export class AuthService {
     admin = new BehaviorSubject<Admin>(null)
 
     constructor(private http: HttpClient) {}
+
     login(email: string, password: string) {
         let body = new URLSearchParams();
         body.set('grant_type', 'password');
@@ -25,12 +26,16 @@ export class AuthService {
             headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
         };
         return this.http.post<AuthResponseData>(
-            'http://localhost:8080/token', body.toString(), options
-        ).pipe(tap(resData => {
+            'http://localhost:8080/token', body.toString(), options)
+        .pipe(tap(resData => {
             const expirtationDate = new Date(new Date().getTime() + +resData.expires_in * 1000)
             const admin = new Admin(email , resData.access_token, expirtationDate)
             
             this.admin.next(admin)
         }))
+    }
+
+    logout() {
+        this.admin.next(null)
     }
 }

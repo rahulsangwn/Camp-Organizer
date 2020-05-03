@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Camp, CampAndFilter } from 'src/app/camp.model'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-camps',
@@ -8,7 +9,7 @@ import { Camp, CampAndFilter } from 'src/app/camp.model'
 })
 export class CampsComponent implements OnInit {
   selectedCamp: CampAndFilter = null
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }

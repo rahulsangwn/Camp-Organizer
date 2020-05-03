@@ -4,7 +4,7 @@ import { CampsComponent } from './camps/camps.component';
 
 
 const routes: Routes = [
-  {path: 'dashboard', component: CampsComponent},
+  //{path: 'dashboard', component: CampsComponent},
   {path: '', component: CampsComponent},
   //{path: 'admin', redirectTo: 'admin', pathMatch: 'full'}
 ];
