@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../admin-module/auth/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -6,11 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  isAuthenticated = false;
+  private adminSub: Subscription
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   
-  ngOnInit(): void {
+  ngOnInit() {
+    this.adminSub = this.authService.admin.subscribe(admin => {
+      this.isAuthenticated = !!admin
+    })
+  }
+
+  ngOnDestroy() {
+    this.adminSub.unsubscribe()
   }
 
 }

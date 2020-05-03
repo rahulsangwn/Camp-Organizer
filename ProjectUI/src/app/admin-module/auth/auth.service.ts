@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Subject, BehaviorSubject } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { Admin } from './admin.model';
 
 export interface AuthResponseData {
     access_token: string,
@@ -9,6 +12,8 @@ export interface AuthResponseData {
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
+    admin = new BehaviorSubject<Admin>(null)
+
     constructor(private http: HttpClient) {}
     login(email: string, password: string) {
         let body = new URLSearchParams();
@@ -21,6 +26,11 @@ export class AuthService {
         };
         return this.http.post<AuthResponseData>(
             'http://localhost:8080/token', body.toString(), options
-        )
+        ).pipe(tap(resData => {
+            const expirtationDate = new Date(new Date().getTime() + +resData.expires_in * 1000)
+            const admin = new Admin(email , resData.access_token, expirtationDate)
+            
+            this.admin.next(admin)
+        }))
     }
 }

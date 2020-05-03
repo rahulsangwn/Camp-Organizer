@@ -1,15 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthComponent } from './auth/auth.component';
-import { CampCreateComponent } from './camp-create/camp-create.component';
 import { CampsComponent } from './camps/camps.component';
 
 
 const routes: Routes = [
   {path: 'dashboard', component: CampsComponent},
-  {path: 'login', component: AuthComponent},
   {path: '', component: CampsComponent},
-  {path: 'addcamp', component: CampCreateComponent}
+  //{path: 'admin', redirectTo: 'admin', pathMatch: 'full'}
 ];
 
 @NgModule({

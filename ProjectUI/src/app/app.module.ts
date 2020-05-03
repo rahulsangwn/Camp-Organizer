@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CampCreateComponent } from './camp-create/camp-create.component';
-import { AuthComponent } from './auth/auth.component';
+import { CampCreateComponent } from './admin-module/camp-create/camp-create.component';
+import { AuthComponent } from './admin-module/auth/auth.component';
 import { LoadingSpinnerComponet } from 'src/shared/loading-spinner/loading-spinner.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FilterViewComponent } from './camps/filter-view/filter-view.component';
@@ -13,12 +13,11 @@ import { CampItemComponent } from './camps/camp-list/camp-item/camp-item.compone
 import { CampsComponent } from './camps/camps.component';
 import { CampListComponent } from './camps/camp-list/camp-list.component';
 import { CampBookComponent } from './camps/camp-book/camp-book.component';
+import { AdminModuleModule } from './admin-module/admin-module.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CampCreateComponent,
-    AuthComponent,
     LoadingSpinnerComponet,
     NavbarComponent,
     FilterViewComponent,
@@ -31,7 +30,8 @@ import { CampBookComponent } from './camps/camp-book/camp-book.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AdminModuleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

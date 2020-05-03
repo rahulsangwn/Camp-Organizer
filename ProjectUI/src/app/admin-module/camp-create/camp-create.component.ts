@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Camp } from 'src/app/camp.model';
+import { AuthService } from '../auth/auth.service';
+import { take, exhaustMap, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-camp-create',
@@ -14,7 +16,7 @@ export class CampCreateComponent implements OnInit {
   imageUrl: string | ArrayBuffer =
   "assets/img/camp3.png";
   fileName: string = "No file selected"
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   ngOnInit(): void {
   }
@@ -44,10 +46,19 @@ export class CampCreateComponent implements OnInit {
 
   onSubmit(data : Camp) {
     data["image"] = 'data:image/jpg;base64,' + this.base64textString
-    this.http.post<Camp>('http://localhost:8080/api/camps', data)
-    .subscribe(responseData => {
-      console.log(responseData)
+
+    this.createCamp(data).subscribe(resData => {
+      console.log(resData)
     })
+  }
+  
+  createCamp(camp) {
+    return this.authService.admin.pipe(
+      take(1), 
+      exhaustMap(admin => {
+        return this.http.post<Camp>('http://localhost:8080/api/camps', camp)
+      }))
+
   }
 
 }
