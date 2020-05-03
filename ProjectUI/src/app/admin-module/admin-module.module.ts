@@ -5,7 +5,7 @@ import { AuthComponent } from './auth/auth.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AdminRoutingModule } from './admin-routing.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-//import { AuthInterceptorService } from './auth/auth-interceptor.service';
+import { AuthInterceptorService } from './auth/auth-interceptor.service';
 
 
 
@@ -19,7 +19,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     AdminRoutingModule
-  ]
-  //providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}]
+  ],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}]
 })
 export class AdminModuleModule { }
