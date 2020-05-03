@@ -23,7 +23,8 @@ export class NavbarComponent implements OnInit {
 
   onLogout() {
     this.authService.logout()
-    this.router.navigate(['/dashboard'])
+    this.router.navigate(['/'])
+    localStorage.clear()
   }
 
   ngOnDestroy() {

@@ -32,7 +32,21 @@ export class AuthService {
             const admin = new Admin(email , resData.access_token, expirtationDate)
             
             this.admin.next(admin)
+
+            localStorage.setItem('adminData', JSON.stringify(admin))
         }))
+    }
+
+    autoLogging() {
+        const adminData = JSON.parse(localStorage.getItem('adminData'))
+        if(!adminData) {
+            return
+        }
+
+        const loadedAdmin = new Admin(adminData.email, adminData._token, new Date(adminData._tokenExpirationDate))
+        if (loadedAdmin.token) {
+            this.admin.next(loadedAdmin)
+        }
     }
 
     logout() {
