@@ -33,7 +33,7 @@ export class ManageBookingComponent implements OnInit {
             })
           this.fetchedData = resData
           this.cancelButtonEnable = new Date() < new Date(resData.checkInDate)
-          console.log(new Date() < new Date(resData.checkInDate))
+          // console.log(new Date() < new Date(resData.checkInDate))
           this.fetching = false
         }, error => {
           console.log(error)
