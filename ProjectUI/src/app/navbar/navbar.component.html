@@ -46,7 +46,7 @@
                 <a class="nav-link" (click)="navToDash()" href="#" *ngIf="isAuthenticated">User Dashboard<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" *ngIf="!isAuthenticated">Manage Booking</a>
+                <a class="nav-link" routerLink="/manage" *ngIf="!isAuthenticated">Manage Booking</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" routerLink="/addcamp" *ngIf="isAuthenticated">Create Camp</a>

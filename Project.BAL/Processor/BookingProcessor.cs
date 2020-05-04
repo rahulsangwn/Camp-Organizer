@@ -40,6 +40,11 @@ namespace Project.BAL.Processor
         public BookingEntity GetBooking(string bookingRef)
         {
             var booking = _booking.Get(bookingRef);
+            if (booking == null)
+            {
+                return null;
+            }
+
             var bookingDetails = _bmapper.BookingToBookingEntity(booking);
 
             return bookingDetails;

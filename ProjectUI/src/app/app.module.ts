@@ -14,6 +14,7 @@ import { CampsComponent } from './camps/camps.component';
 import { CampListComponent } from './camps/camp-list/camp-list.component';
 import { CampBookComponent } from './camps/camp-book/camp-book.component';
 import { AdminModuleModule } from './admin-module/admin-module.module';
+import { ManageBookingComponent } from './camps/manage-booking/manage-booking.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AdminModuleModule } from './admin-module/admin-module.module';
     CampsComponent,
     CampListComponent,
     CampBookComponent,
+    ManageBookingComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Camp } from 'src/app/camp.model';
 import { AuthService } from '../auth/auth.service';
 import { take, exhaustMap, map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-camp-create',
@@ -16,7 +17,7 @@ export class CampCreateComponent implements OnInit {
   imageUrl: string | ArrayBuffer =
   "assets/img/camp3.png";
   fileName: string = "No file selected"
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(private http: HttpClient, private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
   }
@@ -48,6 +49,7 @@ export class CampCreateComponent implements OnInit {
     data["image"] = 'data:image/jpg;base64,' + this.base64textString
 
     this.createCamp(data).subscribe(resData => {
+      this.router.navigate(['/'])
       console.log(resData)
     })
   }
@@ -56,7 +58,7 @@ export class CampCreateComponent implements OnInit {
     return this.authService.admin.pipe(
       take(1), 
       exhaustMap(admin => {
-        return this.http.post<Camp>('http://localhost:8080/api/camps', camp)
+        return this.http.post<Camp>('http://localhost:8080/api/admin', camp)
       }))
 
   }

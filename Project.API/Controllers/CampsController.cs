@@ -19,5 +19,10 @@ namespace Project.API.Controllers
             return _cprocessor.GetCamps(filter);
         }
 
+        public CampEntity Get(int id)
+        {
+            return _cprocessor.GetCamp(id);
+        }
+
     }
 }

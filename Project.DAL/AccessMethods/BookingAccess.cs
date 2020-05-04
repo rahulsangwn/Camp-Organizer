@@ -43,6 +43,7 @@ namespace Project.DAL.AccessMethods
             if (booking != null && booking.CheckedInDate > DateTime.Now)
             {
                 _context.Bookings.Remove(booking);
+                _context.SaveChanges();
                 return true;
             }
 

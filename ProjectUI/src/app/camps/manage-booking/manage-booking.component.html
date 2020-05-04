@@ -1,0 +1,30 @@
+
+<div class="form-body min-vh-100">
+    <div>
+        <div class="login-page">
+            <div class="form">
+                <div class="text-danger font-weight-bold" *ngIf="false" >
+                    Error
+                </div>
+                <p class="lead">Manage Booking</p>
+                <hr>
+                <form class="login-form" #authForm="ngForm">
+                    <input type="text" name="reference" 
+                    placeholder="enter booking reference number" 
+                    required email (input)="onInput()" [(ngModel)]="bookingReference"/>
+                </form>
+                <div class="" *ngIf="fetchedData != null">
+                    <p class="text-info font-weight-bold">Name: {{campName}}</p>
+                    <p>Camp Capacity: {{campCapacity}}</p>
+                    <p>Check In Date: {{fetchedData.checkInDate.substring(0,10)}}</p>
+                    <p>Check Out Date: {{fetchedData.checkOutDate.substring(0,10)}}</p>
+                    <p class="text-danger">Amount Paid: {{fetchedData.totalAmount}}</p>
+                    <button type="submit" *ngIf="cancelButtonEnable" (click)="onBookingCancel()">cancel booking</button>
+                </div>
+                <div *ngIf="fetching">
+                    <app-loading-spinner></app-loading-spinner>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

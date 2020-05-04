@@ -14,12 +14,12 @@ namespace Project.API
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
 
-        //protected void Application_BeginRequest()
-        //{
-        //    if (Request.HttpMethod == "OPTIONS" || Request.HttpMethod == "options")
-        //    {
-        //        Response.Flush();
-        //    }
-        //}
+        protected void Application_BeginRequest()
+        {
+            if (Request.HttpMethod == "OPTIONS" || Request.HttpMethod == "options")
+            {
+                Response.Flush();
+            }
+        }
     }
 }
