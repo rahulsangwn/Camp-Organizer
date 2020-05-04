@@ -1,4 +1,4 @@
-<a href="#" class="card" (click)="onSelected()">
+<!-- <a href="#" class="card" (click)="onSelected()">
     <img class="card-img-top" src="{{camp.image}}" alt="Card image cap">
     <div class="card-body">
         <h5 class="card-title">{{camp.name}}</h5>
@@ -11,4 +11,21 @@
 
         </div>
     </div>
-</a>
+</a> -->
+
+<div 
+    class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+    <div class="image-parent">
+        <img src="{{camp.image}}" class=" custom-size rounded float-left" alt="quixote">
+    </div>
+    <div class="flex-column mx-5">
+        <h3>{{camp.name}}</h3>
+        <p><small>{{camp.description}}</small></p>
+        <span class="badge badge-info badge-pill">Capacity: {{camp.capacity}}</span>
+    </div>
+    <div class="btn-group-vertical">
+        <button class="btn btn-success" (click)="onSelected()">Book</button>
+        <button class="btn btn-danger" *ngIf="isAuthenticated" (click)="onDelete()">Delete</button>
+        <button class="btn btn-info" *ngIf="isAuthenticated">Edit</button>
+    </div>
+</div>

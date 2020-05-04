@@ -40,9 +40,10 @@ namespace Project.API.Controllers
         }
 
         // DELETE api/admin/5
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             _cprocessor.DeleteCamp(id);
+            return true;
         }
     }
 }

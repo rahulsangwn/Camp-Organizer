@@ -31,16 +31,14 @@
         </nav>
     </div>
 
-    <!-- <app-filter-view></app-filter-view> -->
 
     <div *ngIf="isLoading" style="text-align: center;">
         <app-loading-spinner></app-loading-spinner>
     </div>
     <div class="" *ngIf="!isLoading">
-        <div class="card-columns" >
-
+            <ul class="list-group">            
             <app-camp-item *ngFor="let campEntity of campList" 
             (campSelected)="onCampSelected(campEntity)"
             [camp]="campEntity"></app-camp-item>
-        </div>
+            </ul>
     </div>

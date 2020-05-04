@@ -1,7 +1,21 @@
 <div class="container top-buffer">
     <div class="row">
         <div class="col-md-5">
-            <app-camp-item [camp]="campPassed.Camp"></app-camp-item>
+            <!-- <app-camp-item [camp]="campPassed.Camp"></app-camp-item> -->
+            <a href="#" class="card">
+                <img class="card-img-top" src="{{campPassed.Camp.image}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{campPassed.Camp.name}}</h5>
+                    <p class="card-text">{{campPassed.Camp.description}}</p>
+                </div>
+                <div class="card-footer bg-info text-white">
+                    <div class="row">
+                        <small class="col">Capacity: {{campPassed.Camp.capacity}}</small>
+                        <small class="col">Price/Night (INR): {{campPassed.Camp.rate}}</small>
+
+                    </div>
+                </div>
+            </a>
         </div>
 
         <div class="col-md-7 rounded border border-primary">
@@ -44,7 +58,7 @@
                 <div class="form-group row">
                     <label for="CellPhone" class="col-sm-3 col-form-label">Contact No.</label>
                     <div class="col-sm-9">
-                        <input type="text" name="CellPhone" id="CellPhone" class="form-control" ngModel required>
+                        <input type="number" name="CellPhone" id="CellPhone" class="form-control" ngModel required>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -66,7 +80,7 @@
                     </div>
                 </div>
                 <div class="form-group form-row justify-content-center">
-                    <button type="submit" class="btn btn-primary" >Book Now & Pay
+                    <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Book Now & Pay
                         &#x20b9;{{TotalAmount}}</button>
                 </div>
             </form>
@@ -75,12 +89,13 @@
 </div>
 
 
-<div class="modalDialog" [style.opacity]="myOpacity" [style.pointer-events] ="myPointer">
+<div class="modalDialog" [style.opacity]="myOpacity" [style.pointer-events]="myPointer">
     <div> <button type="button" (click)="redirect()" title="Close" class="close">X</button>
 
         <h2 class="mt-2 text-success text-center">{{Message}}</h2>
         <hr>
-        <p class="lead text-info" *ngIf = "BookingReference != null">Please Note Booking Reference Id for managing your booking</p>
+        <p class="lead text-info" *ngIf="BookingReference != null">Please Note Booking Reference Id for managing your
+            booking</p>
         <h2 class="text-danger text-center font-weight-bold">{{BookingReference}}</h2>
     </div>
 </div>

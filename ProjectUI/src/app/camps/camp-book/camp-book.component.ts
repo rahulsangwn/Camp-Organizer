@@ -24,6 +24,7 @@ export class CampBookComponent implements OnInit {
   ngOnInit(): void {
     this.TotalStays = this.calculateTotalStays()
     this.TotalAmount = this.TotalStays * this.campPassed.Camp.rate
+    console.log(this.campPassed)
   }
 
   backToList() {

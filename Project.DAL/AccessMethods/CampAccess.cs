@@ -35,6 +35,7 @@ namespace Project.DAL.AccessMethods
             if (camp != null)
             {
                 _context.Camps.Remove(camp);
+                _context.SaveChanges();
             }
         }
 
