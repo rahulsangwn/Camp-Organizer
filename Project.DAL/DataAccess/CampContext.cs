@@ -31,6 +31,7 @@ namespace Project.DAL.DataAccess
                 .HasMany(e => e.Bookings)
                 .WithRequired(e => e.Camp)
                 .WillCascadeOnDelete(false);
+
         }
     }
 }

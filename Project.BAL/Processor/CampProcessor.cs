@@ -1,6 +1,7 @@
 ﻿using Project.BAL.Entities;
 using Project.BAL.Mapper;
 using Project.DAL.AccessMethods;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -35,7 +36,13 @@ namespace Project.BAL.Processor
 
         public void DeleteCamp(int id)
         {
+            _booking.DeleteBooking(id);
             _camp.Delete(id);
+        }
+
+        public void UpdateCamp(CampEntity camp)
+        {
+            _camp.Update(_cmapper.CampEntityToCamp(camp));
         }
 
         public IEnumerable<CampEntity> GetCamps(FilterEntity filter)

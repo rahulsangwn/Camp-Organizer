@@ -32,6 +32,17 @@ namespace Project.DAL.AccessMethods
                 .Select(s => s.CampId).ToList();
         }
 
+        public void DeleteBooking(int id)
+        {
+            while(_context.Bookings.Any(s => s.CampId == id))
+            {
+                var booking = _context.Bookings.First(s => s.CampId == id);
+                _context.Bookings.Remove(booking);
+                _context.SaveChanges();
+            }
+
+        }
+
         public Booking Get(string bookingRef)
         {
             return _context.Bookings.FirstOrDefault(s => s.BookingReferenceNo == bookingRef);

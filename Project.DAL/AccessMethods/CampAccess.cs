@@ -1,4 +1,5 @@
 ﻿using Project.DAL.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -30,10 +31,9 @@ namespace Project.DAL.AccessMethods
 
         public void Delete(int id)
         {
-            var camp = _context.Camps.FirstOrDefault(s => s.CampId == id);
-
-            if (camp != null)
+            if (_context.Camps.Any(s => s.CampId == id))
             {
+                var camp = _context.Camps.FirstOrDefault(s => s.CampId == id);
                 _context.Camps.Remove(camp);
                 _context.SaveChanges();
             }
@@ -42,6 +42,23 @@ namespace Project.DAL.AccessMethods
         public IEnumerable<Camp> GetAll()
         {
             return _context.Camps.ToList();
+        }
+
+        public void Update(Camp camp)
+        {
+            var obj = _context.Camps.FirstOrDefault(c => c.CampId == camp.CampId);
+
+            obj.Bookings = camp.Bookings;
+            obj.Capacity = camp.Capacity;
+            obj.Description = camp.Description;
+            obj.Image = camp.Image;
+            obj.Name = camp.Name;
+            obj.Price = camp.Price;
+            obj.Rating = camp.Rating;
+
+            _context.Entry(obj).State = System.Data.Entity.EntityState.Modified;
+                 
+
         }
     }
 }

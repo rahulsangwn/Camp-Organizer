@@ -35,8 +35,9 @@ namespace Project.API.Controllers
         }
 
         // PUT api/admin/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]CampEntity camp)
         {
+            _cprocessor.UpdateCamp(camp);
         }
 
         // DELETE api/admin/5
