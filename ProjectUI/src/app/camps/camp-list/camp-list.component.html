@@ -37,8 +37,13 @@
     </div>
     <div class="" *ngIf="!isLoading">
             <ul class="list-group">            
-            <app-camp-item *ngFor="let campEntity of campList" 
+            <app-camp-item *ngFor="let campEntity of campList | paginate : {id: 'pagination',
+            itemsPerPage : 6 , currentPage :page ,totalItems: totalRecords}" 
             (campSelected)="onCampSelected(campEntity)"
             [camp]="campEntity"></app-camp-item>
             </ul>
+    </div>
+    <br>
+    <div *ngIf="!isLoading">
+        <pagination-controls id="pagination" maxSize ="5" directionLinks ="true" (pageChange)="page = $event"></pagination-controls>
     </div>

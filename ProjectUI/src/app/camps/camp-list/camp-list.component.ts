@@ -16,6 +16,11 @@ export class CampListComponent implements OnInit {
     CheckOutDate: this.getDate(1), 
     Capacity: 0
   }
+  totalRecords: number
+  page: number = 1
+
+
+
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -31,6 +36,8 @@ export class CampListComponent implements OnInit {
     .subscribe(camps => {
       this.campList = camps
       this.isLoading = false;
+      
+      this.totalRecords = camps.length
     })
   }
   

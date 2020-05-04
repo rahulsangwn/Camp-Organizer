@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 import { AppComponent } from './app.component';
 import { CampCreateComponent } from './admin-module/camp-create/camp-create.component';
 import { AuthComponent } from './admin-module/auth/auth.component';
@@ -33,7 +35,8 @@ import { ManageBookingComponent } from './camps/manage-booking/manage-booking.co
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    AdminModuleModule
+    AdminModuleModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

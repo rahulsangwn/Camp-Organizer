@@ -19,12 +19,20 @@
         <img src="{{camp.image}}" class=" custom-size rounded float-left" alt="quixote">
     </div>
     <div class="flex-column mx-5">
-        <h3>{{camp.name}}</h3>
+        <div class="row">
+            <div class="col-8">
+                <h3>{{camp.name}}</h3>
+            </div>
+            <div class="col-4 text-right row" style="display:inline;">
+                <h3 class="text-danger" style="display:inline;">&#x20b9;{{camp.rate}}</h3>
+                <small style="display:inline;">/Night</small>
+            </div>
+        </div>
         <p><small>{{camp.description}}</small></p>
         <span class="badge badge-info badge-pill">Capacity: {{camp.capacity}}</span>
     </div>
     <div class="btn-group-vertical">
-        <button class="btn btn-success" (click)="onSelected()">Book</button>
+        <button class="btn btn-success" *ngIf="!isAuthenticated" (click)="onSelected()">Book</button>
         <button class="btn btn-danger" *ngIf="isAuthenticated" (click)="onDelete()">Delete</button>
         <button class="btn btn-info" *ngIf="isAuthenticated">Edit</button>
     </div>
