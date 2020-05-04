@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Project.BAL.Entities
 {
@@ -18,6 +14,7 @@ namespace Project.BAL.Entities
         public int ZipCode { get; set; }
         public string CellPhone { get; set; }
         public int TotalAmount { get; set; }
+        public int Rating { get; set; }
 
     }
 }

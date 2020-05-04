@@ -1,9 +1,6 @@
 ﻿using Project.DAL.DataAccess;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Project.DAL.AccessMethods
 {
@@ -17,7 +14,6 @@ namespace Project.DAL.AccessMethods
 
         public void Create(Camp camp)
         {
-            camp.Rating = 5;
             _context.Camps.Add(camp);
             _context.SaveChanges();
         }
@@ -40,6 +36,11 @@ namespace Project.DAL.AccessMethods
             {
                 _context.Camps.Remove(camp);
             }
+        }
+
+        public IEnumerable<Camp> GetAll()
+        {
+            return _context.Camps.ToList();
         }
     }
 }

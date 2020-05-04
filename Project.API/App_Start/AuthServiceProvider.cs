@@ -1,12 +1,7 @@
 ﻿using Microsoft.Owin.Security.OAuth;
 using Project.BAL.Processor;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
-using System.Web.Http.Cors;
 
 namespace Project.API.App_Start
 {
@@ -42,5 +37,6 @@ namespace Project.API.App_Start
                 context.SetError("invalid_grant", "Please Provide valid email and password");
             }
         }
+
     }
 }

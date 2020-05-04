@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Project.BAL.Entities
+﻿namespace Project.BAL.Entities
 {
     public class CampEntity
     {
-        public int campid { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-        public int rate { get; set; }
-        public string image { get; set; }
-        public int capacity { get; set; }
+        public int CampId { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public int Rate { get; set; }
+        public string Image { get; set; }
+        public int Capacity { get; set; }
+        public int Rating { get; set; }
     }
 }

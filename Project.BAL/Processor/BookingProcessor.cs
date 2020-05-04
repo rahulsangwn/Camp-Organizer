@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Project.BAL.Entities;
+﻿using Project.BAL.Entities;
 using Project.BAL.Logic;
+using Project.BAL.Mapper;
 using Project.DAL.AccessMethods;
 using Project.DAL.DataAccess;
 
@@ -13,9 +9,11 @@ namespace Project.BAL.Processor
     public class BookingProcessor
     {
         readonly BookingAccess _booking;
+        readonly BookingMapper _bmapper;
         public BookingProcessor()
         {
             _booking = new BookingAccess();
+            _bmapper = new BookingMapper();
         }
 
         public string CreateBooking(BookingEntity booking)
@@ -30,19 +28,9 @@ namespace Project.BAL.Processor
             TotalAmountCalculator amountCalculator = new TotalAmountCalculator();
             int amount = amountCalculator.CalculateAmount(booking.CheckInDate, booking.CheckOutDate, booking.CampId);
 
-            Booking newBooking = new Booking()
-            {
-                BookingReferenceNo = bookingRef,
-                CampId             = booking.CampId,
-                BillingAddress     = booking.BillingAddress,
-                State              = booking.State,
-                Country            = booking.Country,
-                ZipCode            = booking.ZipCode,
-                CellPhone          = booking.CellPhone,
-                CheckedInDate      = booking.CheckInDate,
-                CheckedOutDate     = booking.CheckOutDate,
-                TotalAmount        = amount
-            };
+            var newBooking = _bmapper.BookingEntityToBooking(booking);
+            newBooking.BookingReferenceNo = bookingRef;
+            newBooking.TotalAmount = amount;
 
             _booking.CreateBooking(newBooking);
 
@@ -52,19 +40,7 @@ namespace Project.BAL.Processor
         public BookingEntity GetBooking(string bookingRef)
         {
             var booking = _booking.Get(bookingRef);
-            BookingEntity bookingDetails = new BookingEntity()
-            {
-                BookingReferenceNo = bookingRef,
-                CampId = booking.CampId,
-                BillingAddress = booking.BillingAddress,
-                State = booking.State,
-                Country = booking.Country,
-                ZipCode = booking.ZipCode,
-                CellPhone = booking.CellPhone,
-                CheckInDate = booking.CheckedInDate,
-                CheckOutDate = booking.CheckedOutDate,
-                TotalAmount = booking.TotalAmount
-            };
+            var bookingDetails = _bmapper.BookingToBookingEntity(booking);
 
             return bookingDetails;
         }
