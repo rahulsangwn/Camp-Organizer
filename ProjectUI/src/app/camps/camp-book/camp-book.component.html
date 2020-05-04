@@ -37,36 +37,36 @@
                     </div>
                     <div class="col-md-4">
                         <label for="Capacity" class="col-form-label">Capacity</label>
-                        <input type="number" value="{{campPassed.Camp.capacity}}" name="Capacity" id="Capacity"
+                        <input type="number" value="{{campPassed.Camp.capacity}}" name="capacity" id="Capacity"
                             class="form-control" disabled>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="CellPhone" class="col-sm-3 col-form-label">Contact No.</label>
                     <div class="col-sm-9">
-                        <input type="text" name="CellPhone" id="CellPhone" class="form-control" ngModel>
+                        <input type="text" name="CellPhone" id="CellPhone" class="form-control" ngModel required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="BillingAddress" class="col-sm-3 col-form-label">Billing Address</label>
                     <div class="col-sm-9">
                         <input type="text" name="BillingAddress" id="BillingAddress" class="form-control" ngModel
-                            placeholder="#H.No./Flat No., City">
+                            placeholder="#H.No./Flat No., City" required>
                     </div>
                 </div>
                 <div class="form-group form-row">
                     <div class="col-7">
-                        <input ngModel type="text" name="State" class="form-control" placeholder="State">
+                        <input ngModel type="text" name="State" class="form-control" placeholder="State" required>
                     </div>
                     <div class="col">
-                        <input ngModel type="text" name="Country" class="form-control" placeholder="Country">
+                        <input ngModel type="text" name="Country" class="form-control" placeholder="Country" required>
                     </div>
                     <div class="col">
-                        <input ngModel type="number" name="ZipCode" class="form-control" placeholder="Zip">
+                        <input ngModel type="number" name="ZipCode" class="form-control" placeholder="Zip" required>
                     </div>
                 </div>
                 <div class="form-group form-row justify-content-center">
-                    <button type="submit" class="btn btn-primary">Book Now & Pay
+                    <button type="submit" class="btn btn-primary" >Book Now & Pay
                         &#x20b9;{{TotalAmount}}</button>
                 </div>
             </form>
@@ -78,9 +78,9 @@
 <div class="modalDialog" [style.opacity]="myOpacity" [style.pointer-events] ="myPointer">
     <div> <button type="button" (click)="redirect()" title="Close" class="close">X</button>
 
-        <h2 class="mt-2 text-success text-center">Camp Successfully Booked!</h2>
+        <h2 class="mt-2 text-success text-center">{{Message}}</h2>
         <hr>
-        <p class="lead text-info">Please Note Booking Reference Id for managing your booking</p>
+        <p class="lead text-info" *ngIf = "BookingReference != null">Please Note Booking Reference Id for managing your booking</p>
         <h2 class="text-danger text-center font-weight-bold">{{BookingReference}}</h2>
     </div>
 </div>

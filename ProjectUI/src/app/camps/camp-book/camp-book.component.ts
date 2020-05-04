@@ -16,7 +16,8 @@ export class CampBookComponent implements OnInit {
   TotalAmount: number 
   myOpacity= 0
   myPointer = "none"
-  BookingReference: string
+  BookingReference: string = null
+  Message: string = "Booking....."
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -38,7 +39,7 @@ export class CampBookComponent implements OnInit {
   }
 
   onBook(booking : Booking) {
-    booking.CampId = this.campPassed.Camp.campid
+    booking.CampId = this.campPassed.Camp.campId
     booking.CheckInDate = this.campPassed.Filter.CheckInDate
     booking.CheckOutDate = this.campPassed.Filter.CheckOutDate
     booking.TotalAmount = this.TotalAmount
@@ -49,12 +50,14 @@ export class CampBookComponent implements OnInit {
     this.http.post('http://localhost:8080/api/bookings', booking)
     .subscribe(responseData => {
       this.BookingReference = responseData.toString()
-      console.log(responseData)
+      this.Message = "Camp Successfully Booked!"
+    }, error => {
+      this.Message = error.statusText
     })
   }
 
   redirect() {
-    this.router.navigate(['/dashboard', {skipLocationChange: true}]).then(()=>
+    this.router.navigate(['/login', {skipLocationChange: true}]).then(()=>
       this.router.navigate(['/']))
   }
 }

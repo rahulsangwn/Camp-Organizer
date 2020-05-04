@@ -31,4 +31,9 @@ export class NavbarComponent implements OnInit {
     this.adminSub.unsubscribe()
   }
 
+  navToDash() {
+    this.router.navigate(['/login', {skipLocationChange: true}]).then(()=>
+      this.router.navigate(['/']))
+  }
+
 }

@@ -1,5 +1,5 @@
 export interface Camp {
-    campid: number
+    campId: number
     name: string;
     description?: string; // Optional
     capacity: number;
