@@ -1,6 +1,6 @@
 <div class="container top-buffer">
 
-    <div class="my-5">
+    <div class="my-5" *ngIf="!isAuthenticated">
         <nav class="navbar navbar-light bg-danger justify-content-center rounded">
             <form class="form-inline" (ngSubmit)="onFilter(f.value)" #f="ngForm">
                 <span>
@@ -47,3 +47,4 @@
     <div *ngIf="!isLoading">
         <pagination-controls id="pagination" maxSize ="5" directionLinks ="true" (pageChange)="page = $event"></pagination-controls>
     </div>
+</div>

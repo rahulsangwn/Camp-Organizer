@@ -1,17 +1,3 @@
-<!-- <a href="#" class="card" (click)="onSelected()">
-    <img class="card-img-top" src="{{camp.image}}" alt="Card image cap">
-    <div class="card-body">
-        <h5 class="card-title">{{camp.name}}</h5>
-        <p class="card-text">{{camp.description}}</p>
-    </div>
-    <div class="card-footer bg-info text-white">
-        <div class="row">
-            <small class="col">Capacity: {{camp.capacity}}</small>
-            <small class="col">Price/Night (INR): {{camp.rate}}</small>
-
-        </div>
-    </div>
-</a> -->
 
 <div 
     class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
@@ -29,7 +15,7 @@
             </div>
         </div>
         <p><small>{{camp.description}}</small></p>
-        <span class="badge badge-info badge-pill">Capacity: {{camp.capacity}}</span>
+        <span class="badge badge-info badge-pill py-2">Max Capacity: {{camp.capacity}}</span>
     </div>
     <div class="btn-group-vertical">
         <button class="btn btn-success" *ngIf="!isAuthenticated" (click)="onSelected()">Book</button>

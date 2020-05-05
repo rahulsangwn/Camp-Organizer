@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Camp, Filter, CampAndFilter } from 'src/app/camp.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { AuthService } from 'src/app/admin-module/auth/auth.service';
 
 @Component({
   selector: 'app-camp-list',
@@ -18,27 +19,40 @@ export class CampListComponent implements OnInit {
   }
   totalRecords: number
   page: number = 1
+  isAuthenticated: boolean = false;
 
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   ngOnInit(): void {
+    if(this.authService.admin.value != null) {
+      this.isAuthenticated = true;
+    }
     this.fetchCamps()
+
   }
 
   private fetchCamps() {
-    let params = new HttpParams();
-    params = params.append("Capacity", this.filterData.Capacity.toString());
-    params = params.append("CheckInDate", this.filterData.CheckInDate);
-    params = params.append("CheckOutDate", this.filterData.CheckOutDate);
-    this.http.get<Camp[]>('http://localhost:8080/api/camps/', {params: params})
+    this.campsFetchRequest()
     .subscribe(camps => {
       this.campList = camps
       this.isLoading = false;
       
       this.totalRecords = camps.length
     })
+  }
+
+  campsFetchRequest() {
+    if(this.isAuthenticated) {
+      return this.http.get<Camp[]>('http://localhost:8080/api/admin/')
+    }
+
+    let params = new HttpParams();
+    params = params.append("Capacity", this.filterData.Capacity.toString());
+    params = params.append("CheckInDate", this.filterData.CheckInDate);
+    params = params.append("CheckOutDate", this.filterData.CheckOutDate);
+    return this.http.get<Camp[]>('http://localhost:8080/api/camps/', {params: params})
   }
   
   onCampSelected(camp: Camp) {
