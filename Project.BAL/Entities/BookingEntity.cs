@@ -10,6 +10,8 @@ namespace Project.BAL.Entities
 
         [Required]
         public int CampId { get; set; }
+
+        [Required]
         public string BillingAddress { get; set; }
 
         [Required]

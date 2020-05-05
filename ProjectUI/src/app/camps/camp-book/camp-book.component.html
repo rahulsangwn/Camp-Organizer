@@ -1,4 +1,4 @@
-<div class="container top-buffer">
+<div class="container top-buffer min-vh-100">
     <div class="row">
         <div class="col-md-5">
             <!-- <app-camp-item [camp]="campPassed.Camp"></app-camp-item> -->
@@ -12,6 +12,7 @@
                     <div class="row">
                         <small class="col">Capacity: {{campPassed.Camp.capacity}}</small>
                         <small class="col">Price/Night (INR): {{campPassed.Camp.rate}}</small>
+                        
 
                     </div>
                 </div>
@@ -32,6 +33,7 @@
                 <div class="col-4">
                     <p class="lead text-success font-weight-bold">Total Days Stay: {{TotalStays}}</p>
                     <p class="lead text-info font-weight-bold">Price/Night: {{campPassed.Camp.rate}}</p>
+                    <small *ngIf="extra != 0" class="lead text-info font-weight-bold">Weekend Charges (INR): {{extra}}</small>
                     <hr>
                 </div>
             </div>

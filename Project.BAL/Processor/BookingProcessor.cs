@@ -25,12 +25,8 @@ namespace Project.BAL.Processor
                 bookingRef = refGernerator.GenerateBookingReference();
             }
 
-            TotalAmountCalculator amountCalculator = new TotalAmountCalculator();
-            int amount = amountCalculator.CalculateAmount(booking.CheckInDate, booking.CheckOutDate, booking.CampId);
-
             var newBooking = _bmapper.BookingEntityToBooking(booking);
             newBooking.BookingReferenceNo = bookingRef;
-            newBooking.TotalAmount = amount;
 
             _booking.CreateBooking(newBooking);
 
