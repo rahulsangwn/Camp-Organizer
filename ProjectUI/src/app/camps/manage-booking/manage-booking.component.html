@@ -21,7 +21,7 @@
                     <button type="submit" *ngIf="cancelButtonEnable" (click)="onBookingCancel()">cancel booking</button>
                     <div *ngIf="!cancelButtonEnable">
                         <hr>
-                        <p class="font-weight-bold text-dark">Feedback</p>
+                        <p class="font-weight-bold text-dark">Provide Feedback</p>
                         <ul class="list-inline rating-list" *ngFor="let star of stars" style="display: inline-block">
                             <li (click)="countStar(star)" [ngClass]="{'selected': (star <= selectedValue)}">
                                 <i class="fa fa-star"></i>
