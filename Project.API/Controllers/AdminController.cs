@@ -1,6 +1,8 @@
 ﻿using Project.BAL.Entities;
 using Project.BAL.Processor;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 
 namespace Project.API.Controllers
@@ -21,31 +23,42 @@ namespace Project.API.Controllers
         }
 
 
-        // GET api/admin/5
-        public CampEntity Get(int id)
-        {
-            return _cprocessor.GetCamp(id);
-        }
-
         // POST api/admin
         public IHttpActionResult Post(CampEntity value)
         {
-            _cprocessor.CreateCamp(value);
-            return Ok("Camp Created!");
+            if (ModelState.IsValid)
+            {
+                _cprocessor.CreateCamp(value);
+                return Ok("Camp Created");
+            }
+
+            return BadRequest();
         }
 
         // PUT api/admin
-        public bool Put([FromBody]CampEntity camp)
+        public HttpResponseMessage Put([FromBody]CampEntity camp)
         {
-            _cprocessor.UpdateCamp(camp);
-            return true;
+            if(ModelState.IsValid)
+            {
+                _cprocessor.UpdateCamp(camp);
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+
+            return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
         }
 
         // DELETE api/admin/5
-        public bool Delete(int id)
+        public HttpResponseMessage Delete(int id)
         {
-            _cprocessor.DeleteCamp(id);
-            return true;
+            if (ModelState.IsValid)
+            {
+                _cprocessor.DeleteCamp(id);
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
         }
     }
 }

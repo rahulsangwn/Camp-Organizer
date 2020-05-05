@@ -1,5 +1,7 @@
 ﻿using Project.BAL.Entities;
 using Project.BAL.Processor;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 
 namespace Project.API.Controllers
@@ -14,18 +16,34 @@ namespace Project.API.Controllers
 
         public IHttpActionResult Post(BookingEntity value)
         {
-            var bookingReference = _bprocessor.CreateBooking(value);
-            return Ok(bookingReference);
+            if(ModelState.IsValid)
+            {
+                var bookingReference = _bprocessor.CreateBooking(value);
+                return Ok(bookingReference);
+            }
+
+            return BadRequest();
         }
 
         public BookingEntity Get(string bookingRef)
         {
-            return _bprocessor.GetBooking(bookingRef);
+            if(ModelState.IsValid)
+            {
+                return _bprocessor.GetBooking(bookingRef);
+            }
+
+            return null;
         }
 
-        public bool Delete(string bookingRef)
+        public HttpResponseMessage Delete(string bookingRef)
         {
-            return _bprocessor.DeleteBooking(bookingRef);
+            if (ModelState.IsValid)
+            {
+                _bprocessor.DeleteBooking(bookingRef);
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+
+            return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
         }
     }
 }

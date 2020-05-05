@@ -1,6 +1,9 @@
 ﻿using Project.BAL.Entities;
 using Project.BAL.Processor;
+using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 
 namespace Project.API.Controllers
@@ -16,12 +19,25 @@ namespace Project.API.Controllers
         // GET api/camps
         public IEnumerable<CampEntity> Get([FromUri] FilterEntity filter)
         {
+            var today = DateTime.Now;
+            var yestarday = today.AddDays(-1);
+            if (!ModelState.IsValid || filter.CheckInDate < yestarday  || filter.CheckInDate > filter.CheckOutDate)
+            {
+                List<CampEntity> empty = new List<CampEntity>();
+                return empty;
+            }
+
             return _cprocessor.GetCamps(filter);
         }
 
         public CampEntity Get(int id)
         {
-            return _cprocessor.GetCamp(id);
+            if(ModelState.IsValid)
+            {
+                return _cprocessor.GetCamp(id);
+            }
+
+            return null;
         }
 
     }
