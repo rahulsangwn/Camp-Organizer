@@ -57,7 +57,7 @@ namespace Project.DAL.AccessMethods
             obj.Rating = camp.Rating;
 
             _context.Entry(obj).State = System.Data.Entity.EntityState.Modified;
-                 
+            _context.SaveChanges();
 
         }
     }

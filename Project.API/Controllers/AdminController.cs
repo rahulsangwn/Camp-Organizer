@@ -34,10 +34,11 @@ namespace Project.API.Controllers
             return Ok("Camp Created!");
         }
 
-        // PUT api/admin/5
-        public void Put(int id, [FromBody]CampEntity camp)
+        // PUT api/admin
+        public bool Put([FromBody]CampEntity camp)
         {
             _cprocessor.UpdateCamp(camp);
+            return true;
         }
 
         // DELETE api/admin/5
