@@ -14,9 +14,18 @@ export class CampItemComponent implements OnInit {
   @Output() campSelected = new EventEmitter<void>();
   isAuthenticated = false;
 
+  selectedValue: 3
+  stars: number[] = []
+
   constructor(private router: Router, private http: HttpClient, private authService: AuthService) { }
 
   ngOnInit(): void {
+    if (this.camp.rating == 1) this.stars = [1]
+    if (this.camp.rating == 2) this.stars = [1, 2]
+    if (this.camp.rating == 3) this.stars = [1, 2, 3]
+    if (this.camp.rating == 4) this.stars = [1, 2, 3, 4]
+    if (this.camp.rating == 5) this.stars = [1, 2, 3, 4, 5]
+
     if(this.authService.admin.value != null) {
       this.isAuthenticated = true;
     }

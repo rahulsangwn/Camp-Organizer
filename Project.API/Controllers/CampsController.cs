@@ -40,5 +40,16 @@ namespace Project.API.Controllers
             return null;
         }
 
+        public HttpResponseMessage PostRating(string bookingRef, int rating)
+        {
+            if (ModelState.IsValid)
+            {
+                _cprocessor.SetRating(bookingRef, rating);
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+
+            return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+        }
+
     }
 }

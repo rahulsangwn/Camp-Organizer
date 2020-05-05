@@ -1,5 +1,24 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+.rating-list li {
+  float: right;
+  color: rgb(247, 11, 11);
+  padding: 10px 5px;
+}
+
+.rating-list li:hover,
+.rating-list li:hover ~ li,
+.rating-list li.selected {
+  color: #ffd700;
+}
+
+.rating-list {
+  display: inline-block;
+  list-style: none;
+}
+
+
+
 .login-page {
   width: 360px;
   padding: 8% 0 0;

@@ -1,12 +1,13 @@
 .card-columns {
-    @media (max-width: 900px) {
-        column-count: 2;
-    }
-    @media (max-width: 600px) {
-        column-count: 1;
-    }
+  @media (max-width: 900px) {
+    column-count: 2;
+  }
+  @media (max-width: 600px) {
+    column-count: 1;
+  }
 }
 
 .top-buffer {
-    margin-top: 50px;
+  margin-top: 50px;
 }
+

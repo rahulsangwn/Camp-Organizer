@@ -60,5 +60,16 @@ namespace Project.DAL.AccessMethods
 
             return false;
         }
+        
+        public int[] SetAndGetRatings(string bookingRef, int rating)
+        {
+            var obj = _context.Bookings.FirstOrDefault(s => s.BookingReferenceNo == bookingRef);
+            obj.Rating = rating;
+
+            _context.Entry(obj).State = System.Data.Entity.EntityState.Modified;
+            _context.SaveChanges();
+
+            return _context.Bookings.Where(s => s.Rating != 0 && s.CampId == obj.CampId).Select(s => s.Rating).ToArray();
+        }
     }
 }

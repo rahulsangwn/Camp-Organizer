@@ -15,6 +15,8 @@ export class ManageBookingComponent implements OnInit {
   campName = null
   campCapacity = 0
   cancelButtonEnable = false
+  selectedValue: number
+  stars: number[] = [1, 2, 3, 4, 5]
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -47,6 +49,15 @@ export class ManageBookingComponent implements OnInit {
       'http://localhost:8080/api/bookings?bookingRef=' + this.bookingReference).subscribe(res => {
         this.router.navigate(['/'])
       }, error => { console.log(error) })
+  }
+
+  countStar(star) {
+    this.selectedValue = star
+    var url = 'http://localhost:8080/api/camps?bookingRef=' + this.bookingReference + '&rating=' + this.selectedValue 
+    console.log("stars")
+    return this.http.post<any>(url, {}).subscribe(res => {
+      console.log(res);
+    })
   }
 
 }

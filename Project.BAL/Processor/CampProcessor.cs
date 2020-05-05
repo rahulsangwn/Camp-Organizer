@@ -57,5 +57,14 @@ namespace Project.BAL.Processor
 
             return _cmapper.CampToCampEntity(unbookedCamps);
         }
+
+        public void SetRating(string bookingRef, int rating)
+        {
+            var campId = _booking.Get(bookingRef).CampId;
+            int[] ratings = _booking.SetAndGetRatings(bookingRef, rating);
+
+            int roundedRating = (int)Math.Round(ratings.Average(), MidpointRounding.AwayFromZero);
+            _camp.SetRating(roundedRating, campId);
+        }
     }
 }

@@ -1,6 +1,4 @@
-
-<div 
-    class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+<div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
     <div class="image-parent">
         <img src="{{camp.image}}" class=" custom-size rounded float-left" alt="quixote">
     </div>
@@ -16,6 +14,20 @@
         </div>
         <p><small>{{camp.description}}</small></p>
         <span class="badge badge-info badge-pill py-2">Max Capacity: {{camp.capacity}}</span>
+
+        <span class="ml-5">
+            <ul class="list-inline custom-star" *ngFor="let star of stars" style="display: inline-block">
+                <li>
+                    <i class="fa fa-star"></i>
+                </li>
+            </ul>
+            <!-- <ul class="list-inline small">
+                <li *ngFor="let a of selectedValue; let index = index" class="list-inline-item m-0">
+                    <i class="fa fa-star text-success"></i>
+                    </li>
+            </ul> -->
+        </span>
+
     </div>
     <div class="btn-group-vertical">
         <button class="btn btn-success" *ngIf="!isAuthenticated" (click)="onSelected()">Book</button>

@@ -5,6 +5,7 @@ export interface Camp {
     capacity: number;
     rate: number;
     image: string;
+    rating: number
 }
 
 export interface Filter {

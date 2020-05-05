@@ -60,5 +60,13 @@ namespace Project.DAL.AccessMethods
             _context.SaveChanges();
 
         }
+
+        public void SetRating(int rating, int campId)
+        {
+            var obj = _context.Camps.First(s => s.CampId == campId);
+            obj.Rating = rating;
+            _context.Entry(obj).State = System.Data.Entity.EntityState.Modified;
+            _context.SaveChanges();
+        }
     }
 }
