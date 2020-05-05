@@ -21,6 +21,7 @@ export class ManageBookingComponent implements OnInit {
   ngOnInit(): void {
   }
   onInput() {
+    this.fetchedData = null;
     if (this.bookingReference.length == 8) {
       this.fetching = true
       this.http.get<any>(
@@ -33,7 +34,6 @@ export class ManageBookingComponent implements OnInit {
             })
           this.fetchedData = resData
           this.cancelButtonEnable = new Date() < new Date(resData.checkInDate)
-          // console.log(new Date() < new Date(resData.checkInDate))
           this.fetching = false
         }, error => {
           console.log(error)

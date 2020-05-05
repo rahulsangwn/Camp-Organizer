@@ -50,7 +50,7 @@ export class CampCreateComponent implements OnInit {
 
     this.createCamp(data).subscribe(resData => {
       this.router.navigate(['/'])
-      console.log(resData)
+      // console.log(resData)
     })
   }
   
@@ -60,7 +60,6 @@ export class CampCreateComponent implements OnInit {
       exhaustMap(admin => {
         return this.http.post<Camp>('http://localhost:8080/api/admin', camp)
       }))
-
   }
 
 }

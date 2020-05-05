@@ -1,0 +1,52 @@
+<div class="container">
+    <form (ngSubmit)="onUpdate(f.value)" #f="ngForm">
+        <div class="row top-buffer">
+            <div class="text-center col-sm-5">
+                <br>
+                <div class="custom-file">
+                    <input
+                        type="file" class="custom-file-input"
+                        id="customFile" accept="image/*" name="file" required
+                        #fileInput (change)="onFileChange(fileInput.files[0])"
+                    />
+                    <label class="custom-file-label" for="customFile">{{fileName}}</label>
+                </div>
+                <div>
+                    <div class="image-top">
+                        <img class="border border-secondary rounded" [src]="imageUrl" />
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-sm-7 col-pad">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="name" #name="ngModel"
+                        id="name" placeholder="Enter Camp Name" ngModel required [ngModel]="camp.name">
+                    <span class="help-block" style="color: red;" *ngIf="!name.valid && name.touched">Please Enter Name</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="rate">Rate Per Night (INR)</label>
+                    <input type="number" class="form-control" name="rate"
+                        id="rate" ngModel required [ngModel] = "camp.rate">
+                </div>
+
+                <div class="form-group">
+                    <label for="rate">Camp Capacity</label>
+                    <input type="number" class="form-control" name="capacity"
+                        id="capacity" ngModel required [ngModel]="camp.capacity">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" id="description" name="description"
+                        ngModel rows="3" [ngModel]="camp.description"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Update</button>
+            </div>
+        </div>
+    </form>
+</div>
+

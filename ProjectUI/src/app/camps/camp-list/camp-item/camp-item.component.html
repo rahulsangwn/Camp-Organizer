@@ -20,6 +20,6 @@
     <div class="btn-group-vertical">
         <button class="btn btn-success" *ngIf="!isAuthenticated" (click)="onSelected()">Book</button>
         <button class="btn btn-danger" *ngIf="isAuthenticated" (click)="onDelete()">Delete</button>
-        <button class="btn btn-info" *ngIf="isAuthenticated">Edit</button>
+        <button class="btn btn-info" *ngIf="isAuthenticated" (click)="onEdit()">Edit</button>
     </div>
 </div>

@@ -36,4 +36,10 @@ export class CampItemComponent implements OnInit {
       }, error => { console.log(error) })
   }
 
+  onEdit() {
+    var campData = JSON.stringify(this.camp)
+    localStorage.setItem('camp', campData)
+    this.router.navigate(['/edit'])
+  }
+
 }
