@@ -48,7 +48,7 @@
                         ngModel rows="3"></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Create</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!f.valid || fileName == 'No file selected'">Create</button>
             </div>
         </div>
     </form>
