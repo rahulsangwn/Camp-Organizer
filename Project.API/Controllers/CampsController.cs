@@ -21,7 +21,7 @@ namespace Project.API.Controllers
         {
             var today = DateTime.Now;
             var yestarday = today.AddDays(-1);
-            if (!ModelState.IsValid || filter.CheckInDate < yestarday  || filter.CheckInDate > filter.CheckOutDate)
+            if (!ModelState.IsValid || filter.CheckInDate < yestarday  || filter.CheckInDate >= filter.CheckOutDate)
             {
                 List<CampEntity> empty = new List<CampEntity>();
                 return empty;
