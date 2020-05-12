@@ -19,7 +19,8 @@ export class CampListComponent implements OnInit {
   }
   totalRecords: number
   page: number = 1
-  isAuthenticated: boolean = false;
+  isAuthenticated: boolean = false
+  emptyList: boolean = false
 
 
 
@@ -34,8 +35,12 @@ export class CampListComponent implements OnInit {
   }
 
   private fetchCamps() {
+    this.emptyList = false
     this.campsFetchRequest()
     .subscribe(camps => {
+      if(camps.length == 0) {
+        this.emptyList = true
+      }
       this.campList = camps
       this.isLoading = false;
       

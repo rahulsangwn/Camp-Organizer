@@ -17,6 +17,8 @@ export class ManageBookingComponent implements OnInit {
   cancelButtonEnable = false
   selectedValue: number
   stars: number[] = [1, 2, 3, 4, 5]
+  invalidBooking: boolean = false
+  
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -29,6 +31,11 @@ export class ManageBookingComponent implements OnInit {
       this.http.get<any>(
         'http://localhost:8080/api/bookings?bookingRef=' + this.bookingReference)
         .subscribe(resData => {
+          this.invalidBooking = false
+          if (resData == null) {
+            this.invalidBooking = true
+            return
+          }
           this.http.get<Camp>(
             'http://localhost:8080/api/camps/' + resData.campId).subscribe(resCamp => {
               this.campName = resCamp.name

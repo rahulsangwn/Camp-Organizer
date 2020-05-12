@@ -29,10 +29,12 @@
                         </ul>
                     </div>
                 </div>
-                <div *ngIf="fetching">
+                <div *ngIf="fetching && !invalidBooking">
                     <app-loading-spinner></app-loading-spinner>
                 </div>
-
+                <div *ngIf="invalidBooking">
+                    <p class="font-weight-bold text-danger">Booking Not found</p>
+                </div>
 
 
             </div>
